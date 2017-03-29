@@ -81,6 +81,5 @@ public class Main {
         animals.add(new Animal("Mojo", "Monkey", "", "golden"));
 
 
-
     }
 }

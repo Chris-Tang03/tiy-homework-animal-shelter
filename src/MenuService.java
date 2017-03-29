@@ -78,7 +78,6 @@ public class MenuService {
         System.out.printf("Breed: %s%n", animal.getBreed());
         System.out.printf("Description: %s%n", animal.getDescription());
     }
-
     public boolean deleteYesNo (String prompt){
         String input = waitForString(prompt, false);
         if(input.toLowerCase().equals("yes") || input.toLowerCase().equals("y")){
@@ -90,7 +89,6 @@ public class MenuService {
             return deleteYesNo(prompt);
         }
     }
-
     public Animal getAnimal(int index, ArrayList<Animal> animals){
         if(animals.size() < index && index >= 0) {
             return animals.get(index);
@@ -98,7 +96,6 @@ public class MenuService {
             return getAnimal(waitForInt("Invalid ID. Please pick a different ID."), animals);
         }
     }
-
     public void editAnimal(Animal animal){
         String input = "";
         input = waitForString(String.format("Name [%s]", animal.getName()),false);
