@@ -3,9 +3,11 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -186,6 +188,75 @@ public class MenuServiceTest {
         // Assert
         assertThat(selection, equalTo(5));
     }
+
+    @Test
+    //adds an animal and checks to see if it's there
+    public void addAnimalsActuallyAddAnimals (){
+        //Arrange
+        Scanner scanner = new Scanner("1");
+        MenuService menu = new MenuService(scanner);
+
+        //Act
+        ArrayList<Animal> testAnimal = new ArrayList<>();
+        Animal newAnimal = new Animal("Zare", "Dog", "", "black");
+        testAnimal.add(newAnimal);
+        Main main = new Main();
+        System.out.println(main.getAnimals());
+
+        //Assert
+        assertThat(testAnimal.get(0), equalTo(newAnimal));
+    }
+
+    @Test
+    // View a specific animal's details based on its name
+    public void viewAnimalDetailsUsingName () {
+        Scanner scanner = new Scanner("2");
+        MenuService menu = new MenuService(scanner);
+        Animal newAnimal = new Animal("Zare", "Dog", "", "black");
+
+
+        menu.promptForMainMenu();
+        assertThat(newAnimal.getName(), containsString("Zare"));
+
+    }
+
+    //
+
+
+
+
+        /*
+        ListAnimalsActualyListAnimals
+
+        ArrayList testAnimals ...
+        animals.add("Bob")
+        animals.add("tabby")
+
+        assertThat (listAnimal(testAniaml), containsString("Bob")
+
+
+        assertThat(listAnimal(testAnimal), notNullValue())
+
+
+
+        RED/GREEN/REFACTOR
+
+        **In MenuService**
+        listAnimal(ArrayList<Animal> arrayList) {
+            For (Animals animal: arrayList) {
+
+            System.out.println(animal.getnam())
+            }
+        }
+
+
+
+
+         */
+
+
+
+
 
 
 }

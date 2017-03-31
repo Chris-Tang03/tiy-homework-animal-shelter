@@ -1,7 +1,16 @@
+
 import java.util.Scanner;
 
 
 public class MenuService {
+
+    public static final int LIST_ANIMALS = 1;
+    public static final int CREATE_ANIMAL = 2;
+    public static final int VIEW_ANIMAL_DETAILS = 3;
+    public static final int EDIT_ANIMAL = 4;
+    public static final int DELETE_ANIMALS = 5;
+    public static final int QUIT = 6;
+
     private Scanner scanner;
 
     public MenuService(Scanner scanner) {
@@ -23,20 +32,17 @@ public class MenuService {
 
 
     public int waitForInt(String prompt) {
-        // display the prompt to the user
         System.out.println(prompt);
 
-        // check if the next input is an int.
         if (!scanner.hasNextInt()) {
 
-            // show an error message
             System.out.printf("'%s' is not a valid number. Please try again.\n", scanner.next());
 
-            // recursively prompt the user again
             return waitForInt(prompt);
         } else {
-            // return the int the user provided
             return scanner.nextInt();
         }
     }
+
+
 }
