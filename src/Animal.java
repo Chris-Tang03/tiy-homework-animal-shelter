@@ -43,4 +43,14 @@ public class Animal {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", species='" + species + '\'' +
+                ", breed='" + breed + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

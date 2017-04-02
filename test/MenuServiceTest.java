@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -220,19 +219,81 @@ public class MenuServiceTest {
 
     }
 
-    //
+    @Test
+    // When input a number, is it a valid input
+    public void isPromptAValidInput () {
+        Scanner scanner = new Scanner("Name\n7\n0\n10\n6");
+        MenuService menu = new MenuService(scanner);
+        menu.promptForMainMenu();
+
+        assertThat(outputStream.toString(), containsString("This is not an integer."));
+        assertThat(outputStream.toString(), containsString("Invalid input, please try again."));
+    }
+
+
+    @Test
+    public void listAnimalsThroughArray (){
+        Scanner scanner = new Scanner("1");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<>();
+        Animal createAnimal = new Animal("Zare", "Dog", "Husky", "black");
+        Animal createAnimal1 = new Animal("Zulu", "Cat", "", "white");
+        Animal createAnimal2 = new Animal("Tony", "Fish", "", "gold");
+        Animal createAnimal3 = new Animal("Mojo", "Monkey", "", "gray");
+        animals.add(createAnimal);
+        animals.add(createAnimal1);
+        animals.add(createAnimal2);
+        animals.add(createAnimal3);
+
+        menu.listAnimals(animals);
+
+
+        assertThat(4, equalTo(animals.size()));
+        assertThat(outputStream.toString(), containsString("Zare"));
+    }
+
+
+    @Test
+    public void createAnimalSuccessful (){
+        Scanner scanner = new Scanner("Zare\nDog\nfunny\n5\nblack");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animal = new ArrayList<>();
+
+        animal.add(menu.createAnimal());
+
+        assertThat(animal.get(0).getName(),equalTo("Zare"));
+        assertThat(animal.get(0).getSpecies(), equalTo("Dog"));
+
+    }
+
+
+    @Test
+    public void viewAnimalSuccessful (){
+        Scanner scanner = new Scanner("Monkey\n1");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<>();
+        Animal createAnimal = new Animal("Mojo", "Monkey", "", "gray");
+        animals.add(createAnimal);
+
+        menu.viewAnimal(animals);
+
+        assertThat(outputStream.toString(), containsString("Mojo"));
+    }
+
+
+
 
 
 
 
         /*
-        ListAnimalsActualyListAnimals
+        ListAnimalsActuallyListAnimals
 
         ArrayList testAnimals ...
         animals.add("Bob")
         animals.add("tabby")
 
-        assertThat (listAnimal(testAniaml), containsString("Bob")
+        assertThat (listAnimal(testAnimal), containsString("Bob")
 
 
         assertThat(listAnimal(testAnimal), notNullValue())
