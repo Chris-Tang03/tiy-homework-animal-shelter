@@ -284,7 +284,11 @@ public class MenuServiceTest {
     public void editAnimalSuccessful (){
         Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
         MenuService menu = new MenuService(scanner);
+<<<<<<< HEAD:test/MenuServiceTest.java
         ArrayList<Animal> animals = new ArrayList<Animal>();
+=======
+        ArrayList<Animal> animals = new ArrayList<>();
+>>>>>>> v1.2:src/test/java/MenuServiceTest.java
         Animal animal = new Animal("Oreo", "Cat", "", "gray");
         animals.add(animal);
 
@@ -307,8 +311,11 @@ public class MenuServiceTest {
 
         assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
     }
+<<<<<<< HEAD:test/MenuServiceTest.java
 
 
 
 
+=======
+>>>>>>> v1.2:src/test/java/MenuServiceTest.java
 }
