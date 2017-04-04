@@ -285,39 +285,4 @@ public class MenuServiceTest {
 
 
 
-
-        /*
-        ListAnimalsActuallyListAnimals
-
-        ArrayList testAnimals ...
-        animals.add("Bob")
-        animals.add("tabby")
-
-        assertThat (listAnimal(testAnimal), containsString("Bob")
-
-
-        assertThat(listAnimal(testAnimal), notNullValue())
-
-
-
-        RED/GREEN/REFACTOR
-
-        **In MenuService**
-        listAnimal(ArrayList<Animal> arrayList) {
-            For (Animals animal: arrayList) {
-
-            System.out.println(animal.getnam())
-            }
-        }
-
-
-
-
-         */
-
-
-
-
-
-
 }
