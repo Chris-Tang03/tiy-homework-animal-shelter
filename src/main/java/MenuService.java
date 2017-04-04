@@ -144,56 +144,8 @@ public class MenuService {
         }
     }
 
-    public void editAnimal(ArrayList<Animal> animals) {
-
-<<<<<<< HEAD:src/MenuService.java
-        if (animals.size() == 0) {
-            System.out.println("There are no animals, please add some.");
-        } else {
-            System.out.println("Please choose an animal to edit: ");
-            if(scanner.hasNextInt()) {
-                int number = scanner.nextInt();
-                if (number > 0 || number <= animals.size()) {
-
-                    String input = "";
-                    input = waitForString(String.format("Name [%s]", animals.get(number - 1).getName()), false);
-
-                    if (!input.isEmpty()) {
-                        animals.get(number - 1).setName(input);
-                    }
-
-                    input = waitForString(String.format("Species [%s]", animals.get(number - 1).getSpecies()), false);
-
-                    if (!input.isEmpty()) {
-                        animals.get(number - 1).setSpecies(input);
-                    }
-
-                    input = waitForString(String.format("Breed [%s]", animals.get(number - 1).getBreed()), false);
-
-                    if (!input.isEmpty()) {
-                        animals.get(number - 1).setBreed(input);
-                    }
-
-                    input = waitForString(String.format("Description [%s]", animals.get(number - 1).getDescription()), false);
-
-                    if (!input.isEmpty()) {
-                        animals.get(number - 1).setDescription(input);
-                    }
-
-                    System.out.println("Animal list has been updated.");
-
-                } else {
-                    System.out.println("Invalid number, returning to Main Menu.");
-                }
-            } else {
-                System.out.println("Invalid input, returning to Main Menu.");
-            }
-        }
-    }
 
 
-=======
->>>>>>> v1.2:src/main/java/MenuService.java
     public void deleteAnimal (ArrayList<Animal> animals){
         System.out.println("\n-- Delete an Animal --\n");
 
@@ -212,18 +164,15 @@ public class MenuService {
             System.out.println("\nFailed: The animal has not been deleted!\n");
         }
     }
-<<<<<<< HEAD:src/MenuService.java
-=======
 
-    public void quit(){
+    public void quit() {
         System.out.println("\n-- Quit --\n");
         System.out.println("Are you sure you want to quit? (Y/N)");
-        if (scanner.next().toLowerCase().contains("y")){
+        if (scanner.next().toLowerCase().contains("y")) {
             System.out.println("The application has stopped.");
             System.exit(1);
-        }else {
+        } else {
             System.out.println("Returning to Main Menu");
         }
     }
->>>>>>> v1.2:src/main/java/MenuService.java
 }

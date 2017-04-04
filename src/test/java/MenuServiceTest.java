@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class MenuServiceTest {
 
-    ByteArrayOutputStream outputStream;
+    private ByteArrayOutputStream outputStream;
 
     @Before
     public void before() {
@@ -28,10 +28,10 @@ public class MenuServiceTest {
      * Then display menu
      */
 
-    public void whenPromptMainMenuThenDisplayMenu(){
+    public void whenPromptMainMenuThenDisplayMenu() {
         // Arrange
         Scanner scanner = new Scanner("1");
-        MenuService menu = new MenuService (scanner);
+        MenuService menu = new MenuService(scanner);
 
         // Act
         menu.promptForMainMenu();
@@ -48,7 +48,7 @@ public class MenuServiceTest {
      * Then menu contains "1) List animals"
      */
 
-    public void whenMenuDisplayedThenListAnimals (){
+    public void whenMenuDisplayedThenListAnimals() {
         // Arrange
         Scanner scanner = new Scanner("1");
         MenuService menu = new MenuService(scanner);
@@ -67,7 +67,7 @@ public class MenuServiceTest {
      * Then menu contains "2) Create an animal"
      */
 
-    public void whenMenuDisplayedThenCreateAnimal (){
+    public void whenMenuDisplayedThenCreateAnimal() {
         Scanner scanner = new Scanner("2");
         MenuService menu = new MenuService(scanner);
 
@@ -85,7 +85,7 @@ public class MenuServiceTest {
      * Then menu contains "3) View an animal"
      */
 
-    public void whenMenuDisplayedThenViewAnimal (){
+    public void whenMenuDisplayedThenViewAnimal() {
         Scanner scanner = new Scanner("3");
         MenuService menu = new MenuService(scanner);
 
@@ -103,7 +103,7 @@ public class MenuServiceTest {
      * Then menu contains "4) Edit an animal"
      */
 
-    public void whenMenuDisplayedThenEditAnimal (){
+    public void whenMenuDisplayedThenEditAnimal() {
         Scanner scanner = new Scanner("4");
         MenuService menu = new MenuService(scanner);
 
@@ -121,7 +121,7 @@ public class MenuServiceTest {
      * Then menu contains "5) Delete an animal"
      */
 
-    public void whenMenuDisplayedThenDeleteAnimal (){
+    public void whenMenuDisplayedThenDeleteAnimal() {
         Scanner scanner = new Scanner("5");
         MenuService menu = new MenuService(scanner);
 
@@ -139,7 +139,7 @@ public class MenuServiceTest {
      * Then menu contains "6) Quit"
      */
 
-    public void whenMenuDisplayedThenQuit (){
+    public void whenMenuDisplayedThenQuit() {
         Scanner scanner = new Scanner("6");
         MenuService menu = new MenuService(scanner);
 
@@ -158,7 +158,7 @@ public class MenuServiceTest {
      * Then return option 1
      */
 
-    public void whenPrompt1ThenReturn1(){
+    public void whenPrompt1ThenReturn1() {
         // Arrange
         Scanner scanner = new Scanner("1");
         MenuService menu = new MenuService(scanner);
@@ -177,7 +177,7 @@ public class MenuServiceTest {
      * Then return option 5
      */
 
-    public void whenPrompt5ThenReturn5(){
+    public void whenPrompt5ThenReturn5() {
         Scanner scanner = new Scanner("5");
         MenuService menu = new MenuService(scanner);
 
@@ -190,7 +190,7 @@ public class MenuServiceTest {
 
     @Test
     //adds an animal and checks to see if it's there
-    public void addAnimalsActuallyAddAnimals (){
+    public void addAnimalsActuallyAddAnimals() {
         //Arrange
         Scanner scanner = new Scanner("1");
         MenuService menu = new MenuService(scanner);
@@ -208,7 +208,7 @@ public class MenuServiceTest {
 
     @Test
     // View a specific animal's details based on its name
-    public void viewAnimalDetailsUsingName () {
+    public void viewAnimalDetailsUsingName() {
         Scanner scanner = new Scanner("2");
         MenuService menu = new MenuService(scanner);
         Animal newAnimal = new Animal("Zare", "Dog", "", "black");
@@ -221,7 +221,7 @@ public class MenuServiceTest {
 
     @Test
     // When input a number, is it a valid input
-    public void isPromptAValidInput () {
+    public void isPromptAValidInput() {
         Scanner scanner = new Scanner("Name\n7\n0\n10\n6");
         MenuService menu = new MenuService(scanner);
         menu.promptForMainMenu();
@@ -232,7 +232,7 @@ public class MenuServiceTest {
 
 
     @Test
-    public void listAnimalsThroughArray (){
+    public void listAnimalsThroughArray() {
         Scanner scanner = new Scanner("1");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animals = new ArrayList<>();
@@ -254,21 +254,21 @@ public class MenuServiceTest {
 
 
     @Test
-    public void createAnimalSuccessful (){
+    public void createAnimalSuccessful() {
         Scanner scanner = new Scanner("Zare\nDog\nfunny\n5\nblack");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animal = new ArrayList<>();
 
         animal.add(menu.createAnimal());
 
-        assertThat(animal.get(0).getName(),equalTo("Zare"));
+        assertThat(animal.get(0).getName(), equalTo("Zare"));
         assertThat(animal.get(0).getSpecies(), equalTo("Dog"));
 
     }
 
 
     @Test
-    public void viewAnimalSuccessful (){
+    public void viewAnimalSuccessful() {
         Scanner scanner = new Scanner("Monkey\n1");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animals = new ArrayList<>();
@@ -281,18 +281,13 @@ public class MenuServiceTest {
     }
 
     @Test
-    public void editAnimalSuccessful (){
+    public void editAnimalSuccessful() {
         Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
         MenuService menu = new MenuService(scanner);
-<<<<<<< HEAD:test/MenuServiceTest.java
-        ArrayList<Animal> animals = new ArrayList<Animal>();
-=======
-        ArrayList<Animal> animals = new ArrayList<>();
->>>>>>> v1.2:src/test/java/MenuServiceTest.java
         Animal animal = new Animal("Oreo", "Cat", "", "gray");
-        animals.add(animal);
+        ArrayList<Animal> animals = new ArrayList<>();
 
-        menu.editAnimal(animals);
+        animals.add(animal);
 
         assertThat(outputStream.toString(), containsString("Oreo"));
         assertThat(outputStream.toString(), containsString("Cat"));
@@ -300,7 +295,7 @@ public class MenuServiceTest {
 
 
     @Test
-    public void deleteAnimalSuccessful(){
+    public void deleteAnimalSuccessful() {
         Scanner scanner = new Scanner("1\nyes");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animals = new ArrayList<Animal>();
@@ -311,11 +306,4 @@ public class MenuServiceTest {
 
         assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
     }
-<<<<<<< HEAD:test/MenuServiceTest.java
-
-
-
-
-=======
->>>>>>> v1.2:src/test/java/MenuServiceTest.java
 }
