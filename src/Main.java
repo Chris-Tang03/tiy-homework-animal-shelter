@@ -12,66 +12,31 @@ public class Main {
 
         MenuService menu = new MenuService(scanner);
 
-        while(true){
+
+        while (true) {
             int action = menu.promptForMainMenu();
 
-            if(action == menu.LIST_ANIMALS){
+
+            if (action == menu.LIST_ANIMALS) {
                 menu.listAnimals(animals);
 
-            } else if(action == menu.CREATE_ANIMAL) {
+            } else if (action == menu.CREATE_ANIMAL) {
                 animals.add(menu.createAnimal());
 
-            } else if(action == menu.VIEW_ANIMAL_DETAILS){
+            } else if (action == menu.VIEW_ANIMAL_DETAILS) {
                 menu.viewAnimal(animals);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//            } else if(action == menu.VIEW_ANIMAL_DETAILS){
-//                System.out.println("\n-- View an Animal --\n");
-//
-//                //Since this is using the array index, it's going from 0-4, hence -1 is used when to get the index wanted
-//                Animal animal = animals.get(menu.waitForInt("What is the numeric ID of the animal you want to view? ") - 1);
-//                menu.viewAnimalDetails(animal);
-//
-//            } else if(action == menu.EDIT_ANIMAL) {
-//                System.out.println("\n-- Edit Animal --\n");
-//                int index = menu.waitForInt("What is the numeric ID of the animal you want to delete? ");
-//
-//                Animal animal = animals.get(index - 1);
-//
-//                menu.editAnimal(animal);
-//
-//
-//            } else if(action == menu.DELETE_ANIMALS){
-//                System.out.println("\n-- Delete an Animal --\n");
-//
-//                int index = menu.waitForInt("What is the numeric ID of the animal you want to delete? ");
-//
-//                //get animal
-//                Animal animal = animals.get(index - 1);
-//
-//                //display details
-//                menu.viewAnimalDetails(animal);
-//
-//                //prompt if you're sure you want to delete an animal
-//                if(menu.deleteYesNo("\nAre you sure you want to delete this animal? ")){
-//                    animals.remove(index);
-//                    System.out.println("\nSuccess: The animal has been deleted!\n");
-//                }
-//
 
-            } else if(action == menu.QUIT){
+            } else if (action == menu.EDIT_ANIMAL) {
+                menu.editAnimal(animals);
+
+            } else if (action == menu.DELETE_ANIMALS) {
+                menu.deleteAnimal(animals);
+
+            } else if (action == menu.QUIT) {
                 System.out.println("Application stopped.");
                 break;
-            } else{
+
+            } else {
                 System.out.println("Sorry, invalid input. Please try again.");
             }
         }

@@ -280,42 +280,33 @@ public class MenuServiceTest {
         assertThat(outputStream.toString(), containsString("Mojo"));
     }
 
+    @Test
+    public void editAnimalSuccessful (){
+        Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        Animal animal = new Animal("Oreo", "Cat", "", "gray");
+        animals.add(animal);
+
+        menu.editAnimal(animals);
+
+        assertThat(outputStream.toString(), containsString("Oreo"));
+        assertThat(outputStream.toString(), containsString("Cat"));
+    }
 
 
+    @Test
+    public void deleteAnimalSuccessful(){
+        Scanner scanner = new Scanner("1\nyes");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        Animal animal = new Animal("Oreo", "Cat", "", "gray");
 
+        animals.add(animal);
+        menu.deleteAnimal(animals);
 
-
-
-        /*
-        ListAnimalsActuallyListAnimals
-
-        ArrayList testAnimals ...
-        animals.add("Bob")
-        animals.add("tabby")
-
-        assertThat (listAnimal(testAnimal), containsString("Bob")
-
-
-        assertThat(listAnimal(testAnimal), notNullValue())
-
-
-
-        RED/GREEN/REFACTOR
-
-        **In MenuService**
-        listAnimal(ArrayList<Animal> arrayList) {
-            For (Animals animal: arrayList) {
-
-            System.out.println(animal.getnam())
-            }
-        }
-
-
-
-
-         */
-
-
+        assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
+    }
 
 
 
