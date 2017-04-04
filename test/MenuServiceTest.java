@@ -280,7 +280,33 @@ public class MenuServiceTest {
         assertThat(outputStream.toString(), containsString("Mojo"));
     }
 
+    @Test
+    public void editAnimalSuccessful (){
+        Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        Animal animal = new Animal("Oreo", "Cat", "", "gray");
+        animals.add(animal);
 
+        menu.editAnimal(animals);
+
+        assertThat(outputStream.toString(), containsString("Oreo"));
+        assertThat(outputStream.toString(), containsString("Cat"));
+    }
+
+
+    @Test
+    public void deleteAnimalSuccessful(){
+        Scanner scanner = new Scanner("1\nyes");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        Animal animal = new Animal("Oreo", "Cat", "", "gray");
+
+        animals.add(animal);
+        menu.deleteAnimal(animals);
+
+        assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
+    }
 
 
 
