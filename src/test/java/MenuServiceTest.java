@@ -284,7 +284,7 @@ public class MenuServiceTest {
     public void editAnimalSuccessful (){
         Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
         MenuService menu = new MenuService(scanner);
-        ArrayList<Animal> animals = new ArrayList<Animal>();
+        ArrayList<Animal> animals = new ArrayList<>();
         Animal animal = new Animal("Oreo", "Cat", "", "gray");
         animals.add(animal);
 
