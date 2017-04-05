@@ -281,6 +281,7 @@ public class MenuServiceTest {
     }
 
     @Test
+<<<<<<< HEAD:src/test/java/MenuServiceTest.java
     public void editAnimalSuccessful() {
         Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
         MenuService menu = new MenuService(scanner);
@@ -288,22 +289,49 @@ public class MenuServiceTest {
         ArrayList<Animal> animals = new ArrayList<>();
 
         animals.add(animal);
+=======
+    public void editAnimalSuccessful () {
+        Animal animal = new Animal("Oreo", "Cat", "", "gray");
+        Scanner scanner = new Scanner("1\nOreo\nCat\n \nGray");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<>();
+        animals.add(animal);
+
+        menu.viewAnimal(animals);
+>>>>>>> v1.1:test/MenuServiceTest.java
 
         assertThat(outputStream.toString(), containsString("Oreo"));
         assertThat(outputStream.toString(), containsString("Cat"));
+        assertThat(outputStream.toString(), containsString("gray"));
     }
 
 
     @Test
+<<<<<<< HEAD:src/test/java/MenuServiceTest.java
     public void deleteAnimalSuccessful() {
         Scanner scanner = new Scanner("1\nyes");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animals = new ArrayList<Animal>();
+=======
+    public void deleteAnimalSuccessful(){
+>>>>>>> v1.1:test/MenuServiceTest.java
         Animal animal = new Animal("Oreo", "Cat", "", "gray");
+        Scanner scanner = new Scanner("Oreo\nCat\n \ngray");
+        MenuService menu = new MenuService(scanner);
+        ArrayList<Animal> animals = new ArrayList<>();
 
-        animals.add(animal);
         menu.deleteAnimal(animals);
 
         assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
     }
+<<<<<<< HEAD:src/test/java/MenuServiceTest.java
+=======
+
+    @Test
+    public void quitSuccessful() {
+        Scanner scan = new Scanner("6");
+        MenuService menu = new MenuService(scan);
+        assertThat(Integer.parseInt("6"), equalTo(menu.promptForMainMenu()));
+    }
+>>>>>>> v1.1:test/MenuServiceTest.java
 }

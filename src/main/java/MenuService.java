@@ -165,6 +165,10 @@ public class MenuService {
         }
     }
 
+<<<<<<< HEAD:src/main/java/MenuService.java
+=======
+
+>>>>>>> v1.1:src/MenuService.java
     public void quit() {
         System.out.println("\n-- Quit --\n");
         System.out.println("Are you sure you want to quit? (Y/N)");
