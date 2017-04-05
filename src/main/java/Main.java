@@ -6,13 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        
-
         Scanner scanner = new Scanner(System.in);
 
         scanner.useDelimiter("[\n]");
 
         MenuService menu = new MenuService(scanner);
+
 
         while (true) {
             int action = menu.promptForMainMenu();
@@ -34,7 +33,8 @@ public class Main {
                 menu.deleteAnimal(animals);
 
             } else if (action == menu.QUIT) {
-                menu.quit();
+                System.out.println("Application stopped.");
+                break;
 
             } else {
                 System.out.println("Sorry, invalid input. Please try again.");
@@ -42,8 +42,12 @@ public class Main {
         }
     }
 
+
+
     public ArrayList<Animal> getAnimals() {
+
         return animals;
     }
-}
 
+
+}
