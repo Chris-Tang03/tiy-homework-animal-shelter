@@ -166,4 +166,16 @@ public class MenuService {
             System.out.println("\nFailed: The animal has not been deleted!\n");
         }
     }
+
+
+    public void quit() {
+        System.out.println("\n-- Quit --\n");
+        System.out.println("Are you sure you want to quit? (Y/N)");
+        if (scanner.next().toLowerCase().contains("y")) {
+            System.out.println("The application has stopped.");
+            System.exit(1);
+        } else {
+            System.out.println("Returning to Main Menu");
+        }
+    }
 }
