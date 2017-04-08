@@ -3,15 +3,9 @@ import org.junit.Test;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-
 public class AnimalTest {
-    @Test
-    /**
-     * When the animal is given
-     * Then return its properties (name, species, breed, description)
-     */
 
-    //Tests the arraylist in Main class that calls the Animal constructor
+    @Test
     public void whenAnimalThenGiveItsProperties (){
         // Arrange
         Animal animal = new Animal("Nate", "Dragon", "", "Green");
