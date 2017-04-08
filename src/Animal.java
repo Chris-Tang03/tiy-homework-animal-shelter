@@ -1,4 +1,3 @@
-
 public class Animal {
     String name;
     String species;
@@ -44,13 +43,13 @@ public class Animal {
         this.description = description;
     }
 
+
+
     @Override
     public String toString() {
-        return "Animal{" +
-                "name='" + name + '\'' +
-                ", species='" + species + '\'' +
-                ", breed='" + breed + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return  "Name: " + name + '\n' +
+                "Species: " + species + '\n' +
+                "Breed: " + breed + '\n' +
+                "Description: " + description + '\n';
     }
 }
