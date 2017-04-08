@@ -1,5 +1,3 @@
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -124,7 +122,7 @@ public class MenuService {
         if (animals.size() == 0) {
             System.out.println("There are no animals, please add some.");
         } else {
-            System.out.println("Please choose an animal to edit: ");
+            System.out.println("Please choose an animal ID to edit:");
             if(scanner.hasNextInt()) {
                 int number = scanner.nextInt();
                 if (number > 0 || number <= animals.size()) {
@@ -181,7 +179,7 @@ public class MenuService {
         }
 
         //prompt if you're sure you want to delete an animal
-        System.out.println("\nAre you sure you want to delete this animal?");
+        System.out.println("\nAre you sure you want to delete this animal? (Y/N)\n");
         if(scanner.nextLine().toLowerCase().equals("yes") || scanner.nextLine().toLowerCase().equals("y")){
             animals.remove(index - 1);
             System.out.println("\nSuccess: The animal has been deleted!\n");

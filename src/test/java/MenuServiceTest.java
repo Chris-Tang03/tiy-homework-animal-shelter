@@ -220,13 +220,12 @@ public class MenuServiceTest {
     }
 
     @Test
-    // When input a number, is it a valid input
-    public void isPromptAValidInput() {
-        Scanner scanner = new Scanner("Name\n7\n0\n10\n6");
+    // When input a number, it's not a valid input
+    public void promptInputIsInvalid() {
+        Scanner scanner = new Scanner("7\n4");
         MenuService menu = new MenuService(scanner);
         menu.promptForMainMenu();
 
-        assertThat(outputStream.toString(), containsString("This is not an integer."));
         assertThat(outputStream.toString(), containsString("Invalid input, please try again."));
     }
 
@@ -300,14 +299,17 @@ public class MenuServiceTest {
     @Test
     public void deleteAnimalSuccessful() {
 
-        Animal animal = new Animal("Oreo", "Cat", "", "gray");
-        Scanner scanner = new Scanner("Oreo\nCat\n \ngray");
+        Scanner scanner = new Scanner("1\ny");
         MenuService menu = new MenuService(scanner);
         ArrayList<Animal> animals = new ArrayList<>();
+        Animal animal = new Animal("Lily", "Human", "", "Female");
+        animals.add(animal);
 
         menu.deleteAnimal(animals);
 
-        assertThat(outputStream.toString(), containsString("Success: The animal has been deleted!"));
+        assertThat(outputStream.toString(), containsString("\nWhat is the numeric ID of the animal you want to delete?\n"));
+        assertThat(outputStream.toString(), containsString("\nAre you sure you want to delete this animal? (Y/N)\n"));
+        assertThat(outputStream.toString(), containsString("\nSuccess: The animal has been deleted!\n"));
     }
 
     @Test
