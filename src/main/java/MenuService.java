@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,8 +47,7 @@ public class MenuService {
             }
         } else {
             String badInput = scanner.next();
-            System.out.println(badInput);
-            System.out.println("This is not an integer.");
+            System.out.println(badInput + " is not an integer.");
             return waitForInt(prompt);
         }
     }
@@ -78,7 +76,7 @@ public class MenuService {
     }
 
 
-    public Animal createAnimal(){
+    public Animal createAnimal(ArrayList<Animal> animals){
         MenuService menu = new MenuService(scanner);
         System.out.println("\n-- Create Animal --\n \nPlease answer the following questions.\n");
 
@@ -88,6 +86,7 @@ public class MenuService {
         String description = menu.waitForString("\nDescription: ", true);
 
         Animal animal = new Animal(name,species,breed,description);
+        animals.add(animal);
 
         System.out.println("Success: The animal has been created!");
         return animal;
@@ -95,7 +94,27 @@ public class MenuService {
 
     public void viewAnimal(ArrayList<Animal> animals){
         System.out.println("\n-- View an Animal --\n");
-        System.out.println(animals.get(waitForInt("What is the numeric ID of the animal you want to view? ") - 1));
+        if (animals.size() == 0) {
+            System.out.println("No animals available");
+        } else {
+            System.out.println("What is the numeric ID of the animal you want to view? ");
+            int input = 0;
+
+            // Checks input validity as an integer
+            if (scanner.hasNextInt()){
+                input = scanner.nextInt();
+
+                if (input < 1 || input > animals.size()){
+                    System.out.println(input + " is not a valid animal.");
+                } else {
+                    System.out.println(animals.get(input - 1));
+                }
+            } else {
+                String badInput = scanner.next();
+                System.out.println(badInput + " is not a valid input.");
+                viewAnimal(animals);
+            }
+        }
     }
 
     public void editAnimal(ArrayList<Animal> animals) {
@@ -103,7 +122,7 @@ public class MenuService {
         if (animals.size() == 0) {
             System.out.println("There are no animals, please add some.");
         } else {
-            System.out.println("Please choose an animal to edit: ");
+            System.out.println("Please choose an animal ID to edit:");
             if(scanner.hasNextInt()) {
                 int number = scanner.nextInt();
                 if (number > 0 || number <= animals.size()) {
@@ -145,19 +164,23 @@ public class MenuService {
     }
 
 
-
     public void deleteAnimal (ArrayList<Animal> animals){
         System.out.println("\n-- Delete an Animal --\n");
 
-        int index = waitForInt("What is the numeric ID of the animal you want to delete? ");
+        int index = waitForInt("What is the numeric ID of the animal you want to delete?");
 
-        //display details
-        System.out.println(animals.get(index-1));
+        // display whether animal is available to delete
+        if(index < 0 || index > animals.size()) {
+            System.out.println("That animal doesn't exist.");
+        } else if(animals.size() == 0){
+            System.out.println("There are no animals in the shelter.");
+        } else {
+            System.out.println(animals.get(index - 1));
+        }
 
         //prompt if you're sure you want to delete an animal
-
-        System.out.println("\nAre you sure you want to delete this animal?");
-        if(scanner.nextLine().equals("yes")){
+        System.out.println("\nAre you sure you want to delete this animal? (Y/N)\n");
+        if(scanner.nextLine().toLowerCase().equals("yes") || scanner.nextLine().toLowerCase().equals("y")){
             animals.remove(index - 1);
             System.out.println("\nSuccess: The animal has been deleted!\n");
         } else {
@@ -165,13 +188,15 @@ public class MenuService {
         }
     }
 
-    public void quit() {
+
+
+    public void quit(){
         System.out.println("\n-- Quit --\n");
         System.out.println("Are you sure you want to quit? (Y/N)");
-        if (scanner.next().toLowerCase().contains("y")) {
+        if (scanner.next().toLowerCase().contains("y")){
             System.out.println("The application has stopped.");
             System.exit(1);
-        } else {
+        }else {
             System.out.println("Returning to Main Menu");
         }
     }
