@@ -1,12 +1,13 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     private static ArrayList<Animal> animals = new ArrayList<>();
 
-    public static void main(String[] args) {
-
-        
+    public static void main(String[] args) throws SQLException{
+//        String jdbcUrl = "jdbc:h2/mem/animal";
+//        AnimalRepository repository = new AnimalRepository(jdbcUrl);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +23,7 @@ public class Main {
                 menu.listAnimals(animals);
 
             } else if (action == menu.CREATE_ANIMAL) {
-                animals.add(menu.createAnimal());
+                menu.createAnimal(animals);
 
             } else if (action == menu.VIEW_ANIMAL_DETAILS) {
                 menu.viewAnimal(animals);
